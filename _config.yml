@@ -1,0 +1,20 @@
+title: Reglue Go
+logo: https://reglue4go.github.io/img/go/Go-Logo_Blue.svg
+description: 'Reglue packages provide an enjoyable, expressive elegant syntax for developing applications.'
+# Build settings
+include:
+  - ./assets
+  - ./_data
+  - ./_includes
+  - ./_layouts
+  - ./_posts
+  - ./_sass
+# defaults:
+#   scope:
+#     path: '' # folder to apply
+#     type: 'posts' # for files in _post folder apply values
+#   values:
+#     layout: 'post'
+
+# plugins:
+#   - jekyll-seo-tag
