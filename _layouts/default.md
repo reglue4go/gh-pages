@@ -20,7 +20,6 @@
       {% if site.title and site.title != page.title %}
       <h1>
         <a href="{{ "/" | absolute_url }}">
-          <img src="{{ site.favicon | relative_url }}" width="24" height="24" alt="logo" style="display: block; margin: 0 auto">
           {{ site.title }}
         </a>
       </h1>
@@ -33,6 +32,8 @@
         This site is open source. {% github_edit_link "Improve this page" %}.
       </div>
       {% endif %}
+
+      {% include foot.md %}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
     <script>anchors.add();</script>

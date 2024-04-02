@@ -17,8 +17,6 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 1.  [Structures](https://reglue4go.github.io/structures/)
 1.  [View](https://reglue4go.github.io/view/)
 
-{% include foot.md %}
-
 [//]: # '## License'
 [//]: # 'A license is provided on a per user basis.'
 [//]: # '# [![dnkwati](https://img.shields.io/badge/-%40dnkwati-black)](mailto:drnkwati@gmail.com)'
