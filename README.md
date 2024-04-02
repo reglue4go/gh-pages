@@ -4,7 +4,7 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 
 ## Package Listing
 
-> **Note:**&ensp;This repository contains documentation for packages published at [Reglue Go](https://github.com/reglue4go)
+> 💡 **Note:**&ensp;This repository contains documentation for packages published at [Reglue Go](https://github.com/reglue4go)
 
 1.  [Config](https://reglue4go.github.io/config)
 1.  [Cryptography](https://reglue4go.github.io/cryptography)

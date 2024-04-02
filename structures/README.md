@@ -6,10 +6,10 @@
 >
 > -   [Introduction](#introduction)
 > -   Available Structures
->     1.  [Bag](https://reglue4go.github.io/docs/structures/bag)
->     1.  [Collection](https://reglue4go.github.io/docs/structures/collection)
->     1.  [Fluent](https://reglue4go.github.io/docs/structures/fluent)
->     1.  [List](https://reglue4go.github.io/docs/structures/list)
+>     1.  [Bag](https://reglue4go.github.io/structures/bag)
+>     1.  [Collection](https://reglue4go.github.io/structures/collection)
+>     1.  [Fluent](https://reglue4go.github.io/structures/fluent)
+>     1.  [List](https://reglue4go.github.io/structures/list)
 > -   [Unit Tests Matrix](#unit-tests-matrix)
 
 ## Introduction
