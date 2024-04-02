@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-{% seo %}
-
-<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-{% include head-custom.html %}
-
-{% for image in site.static_files %}
-{% if image.path contains '/Go-Logo_Blue.svg' %}
-
-<link rel="icon" href="{{site.baseurl}}{{image.path}}" sizes="any" type="image/svg+xml">
-{% endif %}
-{% endfor %}
+    <link rel="icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <!-- Material symbols everything default and using `weight: 100` -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" />
+    {% seo %}
+    {% include head-custom.html %}
 
 <!-- custom styles -->
-
 <!-- <link rel="stylesheet" href="{{ '/_assets/css/app.css?v=' | append: site.github.build_revision | relative_url  }}"> -->
 
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
       {% if site.title and site.title != page.title %}
-      <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+      <h1>
+        <a href="{{ "/" | absolute_url }}">
+          <img src="{{ site.favicon | relative_url }}" width="24" height="24" alt="logo" style="display: block; margin: 0 auto">
+          {{ site.title }}
+        </a>
+      </h1>
       {% endif %}
 
       {{ content }}

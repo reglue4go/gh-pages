@@ -1,6 +1,18 @@
+# ============================================================================
+# if your site is serving on https://xxx.github.io, set `baseurl: /`
+# if your site is serving on https://xxx.github.io/path, set `baseurl: /path`
+baseurl: /
+
+# site title
 title: Reglue Go
-logo: https://reglue4go.github.io/img/go/Go-Logo_Blue.svg
 description: 'Reglue packages provide an enjoyable, expressive elegant syntax for developing applications.'
+# site favicon, absolute path required
+favicon: https://github.com/reglue4go.png
+# home button image, absolute path requried
+# avatar: https://github.com/reglue4go.png
+
+logo: https://reglue4go.github.io/img/go/Go-Logo_Blue.svg
+
 # Build settings
 include:
   - ./assets

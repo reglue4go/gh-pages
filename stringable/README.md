@@ -1,6 +1,6 @@
 # Stringable
 
-{% include iconBarOScoverage.md %}
+{% include headOScoverage.md %}
 
 > Table Of Contents
 >
@@ -718,4 +718,4 @@ value := stringable.New("This is my name").After("This is").Value()
 // " my name"
 ```
 
-{% include matrix4unitTests.md %}
+{% include footMatrixes.md %}

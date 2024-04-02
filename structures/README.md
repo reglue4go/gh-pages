@@ -1,6 +1,6 @@
 # Structures
 
-{% include iconBarOScoverage.md %}
+{% include headOScoverage.md %}
 
 > Table Of Contents
 >
@@ -16,4 +16,4 @@
 
 A fluent, convenient wrapper for working with maps, arrays, slices, list and collection of values.
 
-{% include matrix4unitTests.md %}
+{% include footMatrixes.md %}

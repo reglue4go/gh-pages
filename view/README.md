@@ -1,6 +1,6 @@
 # View
 
-{% include iconBarOScoverage.md %}
+{% include headOScoverage.md %}
 
 > Table Of Contents
 >
@@ -15,4 +15,4 @@
 
 ## Method Listing
 
-{% include matrix4unitTests.md %}
+{% include footMatrixes.md %}
