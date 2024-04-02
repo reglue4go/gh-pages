@@ -33,8 +33,6 @@
         This site is open source. {% github_edit_link "Improve this page" %}.
       </div>
       {% endif %}
-
-      {% include footGologo.md %}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
     <script>anchors.add();</script>
