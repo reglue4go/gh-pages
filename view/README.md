@@ -17,6 +17,7 @@ Views separate your application logic from your presentation logic. They are sto
 
 ```html
 <!-- View stored in templates/greeting.gohtml -->
+
 <!DOCTYPE html>
 <html lang="en">
 	<body>
@@ -229,33 +230,136 @@ The view Resolver is responsible for locating views and associating them with ve
 
 #### [TemplateCompilers](#view-resolver-methods)
 
+The TemplateCompilers method returns a map of registered extensions and their corresponding compilers.
+
 #### [Tags](#view-resolver-methods)
+
+The Tags method returns a map of registered tags and their corresponding aliases.
+
+```go
+tags := view.NewFactory("templates").Resolver().Tags()
+
+fmt.Printf("%v\n", tags)
+// map[htm:gohtml html:gohtml]
+
+```
 
 #### [TagCompiler](#view-resolver-methods)
 
+Tags are aliases to existing view compilers. They are used to associate extensions with compilers. If you wish to use an HTML compiler for compiling files with .htm extension, simply tag the html compiler with an htm extension.
+
 #### [Share](#view-resolver-methods)
+
+The Share method adds a piece of shared data to the environment. Unlike the Data method, it can be chained.
+
+```go
+compiled := view.NewFactory("templates").Resolver().Share("Jane").Compile("greeting.gohtml")
+
+```
 
 #### [SetLocation](#view-resolver-methods)
 
+The SetLocation method registers view locations and returns the Resolver instance.
+
+```go
+resolver := view.NewFactory().Resolver().SetLocation("templates", "themes/dark")
+
+```
+
 #### [SetDefaultExtension](#view-resolver-methods)
+
+The SetDefaultExtension registers a default view file extension.
+
+```go
+resolver := view.NewFactory("templates").Resolver().SetDefaultExtension("amber")
+
+```
 
 #### [SetDefaultCompiler](#view-resolver-methods)
 
+The SetDefaultCompiler registers a default template compiler callback. Whenever a compiler for an extension cannot be resolved, the default compiler will be used.
+
 #### [ResolveCompiler](#view-resolver-methods)
+
+The ResolveCompiler gets the compiler for a given extension.
 
 #### [NormalizeName](#view-resolver-methods)
 
+The NormalizeName method ensures an extension is included in the given view name.
+
+```go
+resolver := view.NewFactory("templates").Resolver()
+
+extension := resolver.NormalizeName("greeting")
+
+fmt.Printf("%v\n", extension == "greeting.gohtml")
+// true
+
+extension := resolver.DotExtension("greeting.gohtml")
+
+fmt.Printf("%v\n", extension == "greeting.gohtml")
+// true
+
+```
+
 #### [Locations](#view-resolver-methods)
+
+The Locations method returns a list of registered view locations. If you provide a list of locations as arguments, they will be registered.
+
+```go
+resolver := view.NewFactory("templates").Resolver()
+
+list := resolver.Locations("themes/default")
+
+fmt.Printf("%v\n", list)
+// ["templates" "themes/default"]
+
+```
 
 #### [Load](#view-resolver-methods)
 
+The Load method locates and maps view files from the provided paths.
+
 #### [IsLoaded](#view-resolver-methods)
+
+The IsLoaded method determines if view files have been located.
 
 #### [Files](#view-resolver-methods)
 
+The Files method Get the views that have been located.
+
 #### [Exists](#view-resolver-methods)
 
+The Exists method determines if a given view exists.
+
+```go
+resolver := view.NewFactory("templates").Resolver()
+
+found := resolver.Exists("greeting")
+
+fmt.Printf("%v\n", found)
+// true
+
+```
+
 #### [DotExtension](#view-resolver-methods)
+
+The DotExtension method prefixes a dot in the file extension.
+
+```go
+resolver := view.NewFactory("templates").Resolver()
+
+extension := resolver.DotExtension("gohtml")
+
+fmt.Printf("%v\n", extension == ".gohtml")
+// true
+
+extension := resolver.DotExtension(".gohtml")
+
+fmt.Printf("%v\n", extension == ".gohtml")
+// true
+
+```
 
 #### [DefaultExtension](#view-resolver-methods)
 
@@ -263,37 +367,73 @@ The view Resolver is responsible for locating views and associating them with ve
 
 #### [Data](#view-resolver-methods)
 
+The Data method returns a piece of shared data from the environment. You can optionally share a piece of data as a second argument.
+
+```go
+resolver := view.NewFactory("templates").Resolver()
+resolver.Data("Jane")
+compiled := resolver.Compile("greeting.gohtml")
+
+```
+
 #### [Compile](#view-resolver-methods)
+
+The Compile method compiles a list of views and returns a string.
+
+```go
+factory := view.NewFactory("templates")
+compiled := factory.Resolver().Compile("layouts/app.gohtml", "home.gohtml")
+
+```
 
 #### [AddLocation](#view-resolver-methods)
 
-#### [AddCompiler](#view-resolver-methods)
+The AddLocation adds directories where view template files are located.
 
 ```go
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1" />
-		<title>{{block "title" .}}Default Title{{end}}</title>
-		<link
-			crossorigin="anonymous"
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-		{{block "head" .}}{{end}}
-	</head>
-	<body>
-		{{block "header" .}}This is the header{{end}}
-		{{block "body" .}}This is the body{{end}}
-		{{block "footer" .}}This is the footer{{end}}
-		<script
-			crossorigin="anonymous"
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-		{{block "foot" .}}{{end}}
-	</body>
-</html>
+factory := view.NewFactory("templates")
+resolver := factory.Resolver().AddLocation("themes/light", "themes/dark").AddLocation("themes/default")
+
+```
+
+#### [AddCompiler](#view-resolver-methods)
+
+The AddCompiler method registers a view extension and its compiler. Template compilers are view handler callbacks functions.
+The first argument to the AddCompiler method is a view extension while second argument is a callback function.
+
+```go
+package main
+
+import (
+	"bytes"
+ 	"github.com/eknkc/amber"
+ 	"github.com/reglue4go/view"
+ )
+
+func main() {
+	factory := view.NewFactory("templates")
+	resolver := factory.Resolver()
+	// register a view compiler for amber file extension
+	resolver.AddCompiler("amber", func(resolver *view.Resolver, paths ...string) string {
+		if len(paths) > 0 {
+			name := resolver.NormalizeName(paths[0])
+			file := resolver.Load().Files()[name]
+			compiler := amber.New()
+			if err := compiler.ParseFile(file); err == nil {
+				if temp, err := compiler.Compile(); err == nil {
+					var value bytes.Buffer
+					temp.Execute(&value, resolver.Data())
+					return value.String()
+				}
+			}
+		}
+		return ""
+		},
+	)
+
+	compiled := factory.Make("greeting.amber", "Jane")
+}
+
 ```
 
 {% include footMatrixes.md %}
