@@ -13,20 +13,22 @@
 
 Views separate your application logic from your presentation logic. They are stored in files or directly rendered from strings. View templates are usually written using the Golang templating language. A simple golang template looks like this:
 
+{% raw %}
+
 ```html
 <!-- View stored in templates/greeting.gohtml -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<body>
-		<h1>Hello, &#123;&#123;&#46;&#125;&#125;</h1>
-
-		&#123;&#123;block "footer" &#46;&#125;&#125;
+		<h1>Hello, 󠁻{{․}}</h1>
+		󠁻 {{block "footer" ․}}
 		<p>© 2024</p>
-		&#123;&#123;end&#125;&#125;
+		{{end}}
 	</body>
 </html>
 ```
+
+{% endraw %}
 
 This view is stored at templates/greeting.gohtml and we may compile it like so:
 
