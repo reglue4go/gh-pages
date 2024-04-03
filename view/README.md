@@ -295,9 +295,9 @@ extension := resolver.NormalizeName("greeting")
 fmt.Printf("%v\n", extension == "greeting.gohtml")
 // true
 
-extension := resolver.DotExtension("greeting.gohtml")
+extension2 := resolver.DotExtension("greeting.gohtml")
 
-fmt.Printf("%v\n", extension == "greeting.gohtml")
+fmt.Printf("%v\n", extension2 == "greeting.gohtml")
 // true
 
 ```
@@ -354,9 +354,9 @@ extension := resolver.DotExtension("gohtml")
 fmt.Printf("%v\n", extension == ".gohtml")
 // true
 
-extension := resolver.DotExtension(".gohtml")
+extension2 := resolver.DotExtension(".gohtml")
 
-fmt.Printf("%v\n", extension == ".gohtml")
+fmt.Printf("%v\n", extension2 == ".gohtml")
 // true
 
 ```
@@ -405,9 +405,9 @@ compiled := resolver.Compile("layouts/app.gohtml", "home.gohtml")
 The AddLocation adds directories where view template files are located.
 
 ```go
-resolver := view.NewFactory("templates").Resolver()
-resolver := resolver.AddLocation("themes/light", "themes/dark").AddLocation("themes/default")
-
+resolver := view.NewFactory("templates").Resolver().
+	AddLocation("themes/light", "themes/dark").
+	AddLocation("themes/default")
 ```
 
 #### [AddCompiler](#view-resolver-methods)
@@ -425,8 +425,7 @@ import (
  )
 
 func main() {
-	factory := view.NewFactory("templates")
-	resolver := factory.Resolver()
+	resolver := NewFactory("templates").Resolver()
 	// register a view compiler for amber file extension
 	resolver.AddCompiler("amber", func(resolver *view.Resolver, paths ...string) string {
 		if len(paths) > 0 {
@@ -445,7 +444,7 @@ func main() {
 		},
 	)
 
-	compiled := factory.Make("greeting.amber", "Jane")
+	compiled := resolver.Share("Jane").Compile("greeting.amber")
 }
 
 ```
