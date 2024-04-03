@@ -363,7 +363,21 @@ fmt.Printf("%v\n", extension == ".gohtml")
 
 #### [DefaultExtension](#view-resolver-methods)
 
+The DefaultExtension method sets and returns the default view extension.
+
+```go
+resolver := view.NewFactory("templates").Resolver()
+
+extension := resolver.DefaultExtension("amber")
+
+fmt.Printf("%v\n", extension == "amber")
+// true
+
+```
+
 #### [DefaultCompiler](#view-resolver-methods)
+
+The DefaultCompiler method sets and returns the default view compiler callback.
 
 #### [Data](#view-resolver-methods)
 
@@ -381,8 +395,8 @@ compiled := resolver.Compile("greeting.gohtml")
 The Compile method compiles a list of views and returns a string.
 
 ```go
-factory := view.NewFactory("templates")
-compiled := factory.Resolver().Compile("layouts/app.gohtml", "home.gohtml")
+resolver := view.NewFactory("templates").Resolver()
+compiled := resolver.Compile("layouts/app.gohtml", "home.gohtml")
 
 ```
 
@@ -391,8 +405,8 @@ compiled := factory.Resolver().Compile("layouts/app.gohtml", "home.gohtml")
 The AddLocation adds directories where view template files are located.
 
 ```go
-factory := view.NewFactory("templates")
-resolver := factory.Resolver().AddLocation("themes/light", "themes/dark").AddLocation("themes/default")
+resolver := view.NewFactory("templates").Resolver()
+resolver := resolver.AddLocation("themes/light", "themes/dark").AddLocation("themes/default")
 
 ```
 
