@@ -246,7 +246,7 @@ fmt.Printf("%v\n", tags)
 
 #### [TagCompiler](#view-resolver-methods)
 
-Tags are aliases to existing view compilers. They are used to associate extensions with compilers. If you wish to use an HTML compiler for compiling files with .htm extension, simply tag the html compiler with an htm extension.
+Tags are aliases to existing view compilers. They are used to associate extensions with compilers. If you wish to use an HTML compiler for compiling files with .htm extension, simply tag the html compiler with an htm extension by calling the TagCompiler method.
 
 #### [Share](#view-resolver-methods)
 
@@ -295,7 +295,7 @@ extension := resolver.NormalizeName("greeting")
 fmt.Printf("%v\n", extension == "greeting.gohtml")
 // true
 
-extension2 := resolver.DotExtension("greeting.gohtml")
+extension2 := resolver.NormalizeName("greeting.gohtml")
 
 fmt.Printf("%v\n", extension2 == "greeting.gohtml")
 // true
@@ -326,7 +326,7 @@ The IsLoaded method determines if view files have been located.
 
 #### [Files](#view-resolver-methods)
 
-The Files method Get the views that have been located.
+The Files method returns a list of located views.
 
 #### [Exists](#view-resolver-methods)
 
@@ -344,7 +344,7 @@ fmt.Printf("%v\n", found)
 
 #### [DotExtension](#view-resolver-methods)
 
-The DotExtension method prefixes a dot in the file extension.
+The DotExtension method prefixes a dot in the given extension.
 
 ```go
 resolver := view.NewFactory("templates").Resolver()
@@ -381,7 +381,7 @@ The DefaultCompiler method sets and returns the default view compiler callback.
 
 #### [Data](#view-resolver-methods)
 
-The Data method returns a piece of shared data from the environment. You can optionally share a piece of data as a second argument.
+The Data method returns a piece of shared data from the environment. You can optionally share a piece of data as an argument.
 
 ```go
 resolver := view.NewFactory("templates").Resolver()
