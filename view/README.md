@@ -13,8 +13,8 @@
 
 Views separate your application logic from your presentation logic. They are stored in files or directly rendered from strings. View templates are usually written using the Golang templating language. A simple golang template looks like this:
 
-```html
-<!-- View stored in templates/greeting.gohtml -->
+```go
+// View stored in templates/greeting.gohtml
 
 <!DOCTYPE html>
 <html lang="en">
@@ -96,10 +96,10 @@ func main() {
 
 ## View Factory Methods
 
-| &#8230;                          | &#8230;                          | &#8230;                                 |
-| :------------------------------- | :------------------------------- | :-------------------------------------- |
-| [CompilerViews](#compiler-views) | [DefaultLayout](#default-layout) | [Make](#make)                           |
-| [MakeUsing](#make-using)         | [Resolver](#resolver)            | [SetDefaultLayout](#set-default-layout) |
+| &#8230;                         | &#8230;                         | &#8230;                               |
+| :------------------------------ | :------------------------------ | :------------------------------------ |
+| [CompilerViews](#compilerviews) | [DefaultLayout](#defaultlayout) | [Make](#make)                         |
+| [MakeUsing](#makeusing)         | [Resolver](#resolver)           | [SetDefaultLayout](#setdefaultlayout) |
 
 #### [CompilerViews](#view-factory-methods)
 
@@ -155,11 +155,13 @@ package main
 import "github.com/reglue4go/view"
 
 func main() {
-	compiled := view.NewFactory("templates").Make("greeting.gohtml", "Jane")
+	factory := view.NewFactory("templates")
 
-	compiled2 := view.NewFactory("templates").Make("greeting", "Jane")
+	compiled := factory.Make("greeting.gohtml", "Jane")
 
-	fmt.Printf("%v\n", compiled == compiled2)
+	compiledAgain := factory.Make("greeting", "Jane")
+
+	fmt.Printf("%v\n", compiled == compiledAgain)
 	// true
 
 	fmt.Printf("%v\n", compiled)
@@ -182,7 +184,7 @@ The MakeUsing method renders the template using a provided layout.
 
 ```go
 compiled := view.NewFactory("templates").
-	MakeUsing("layouts/email", "welcome", map[string]string{
+	MakeUsing("layouts/email", "welcome", map[string]any{
 		"address": "jane@gmail.io",
 		"to": "jane",
 	})
@@ -190,7 +192,7 @@ compiled := view.NewFactory("templates").
 
 #### [Resolver](#view-factory-methods)
 
-The Resolver method return the view Resolver instance used by the factory.
+The Resolver method returns the view Resolver instance used by the factory.
 
 ```go
 viewResolver := view.NewFactory("templates").Resolver()
@@ -209,17 +211,19 @@ fmt.Printf("%v\n", factory.DefaultLayout())
 
 ## View Resolver
 
+The view Resolver is responsible for locating views and associating them with verious compilers.
+
 ## View Resolver Methods
 
-| &#8230;                                       | &#8230;                              | &#8230;                                     |
-| :-------------------------------------------- | :----------------------------------- | :------------------------------------------ |
-| [AddCompiler](#add-compiler)                  | [AddLocation](#add-location)         | [Compile](#compile)                         |
-| [Data](#data)                                 | [DefaultCompiler](#default-compiler) | [DefaultExtension](#default-extension)      |
-| [DotExtension](#dot-extension)                | [Exists](#exists)                    | [Files](#files)                             |
-| [IsLoaded](#is-loaded)                        | [Load](#load)                        | [Locations](#locations)                     |
-| [NormalizeName](#normalize-name)              | [ResolveCompiler](#resolve-compiler) | [SetDefaultCompiler](#set-default-compiler) |
-| [SetDefaultExtension](#set-default-extension) | [SetLocation](#set-location)         | [Share](#share)                             |
-| [TagCompiler](#tag-compiler)                  | [Tags](#tags)                        | [TemplateCompilers](#template-compilers)    |
+| &#8230;                                     | &#8230;                             | &#8230;                                   |
+| :------------------------------------------ | :---------------------------------- | :---------------------------------------- |
+| [AddCompiler](#addcompiler)                 | [AddLocation](#addlocation)         | [Compile](#compile)                       |
+| [Data](#data)                               | [DefaultCompiler](#defaultcompiler) | [DefaultExtension](#defaultextension)     |
+| [DotExtension](#dotextension)               | [Exists](#exists)                   | [Files](#files)                           |
+| [IsLoaded](#isloaded)                       | [Load](#load)                       | [Locations](#locations)                   |
+| [NormalizeName](#normalizename)             | [ResolveCompiler](#resolvecompiler) | [SetDefaultCompiler](#setdefaultcompiler) |
+| [SetDefaultExtension](#setdefaultextension) | [SetLocation](#setlocation)         | [Share](#share)                           |
+| [TagCompiler](#tagcompiler)                 | [Tags](#tags)                       | [TemplateCompilers](#templatecompilers)   |
 
 #### [TemplateCompilers](#view-resolver-methods)
 
