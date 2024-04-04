@@ -7,14 +7,8 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 > 💡 **Note:**&ensp;This repository contains documentation for packages published at [Reglue Go](https://github.com/reglue4go)
 
 1.  [Config](https://reglue4go.github.io/config)
-    [//]: # '1. [Cryptography](https://reglue4go.github.io/cryptography)'
-    [//]: # '1. [Database](https://reglue4go.github.io/db)'
-    [//]: # '1. [Database - GORM](https://reglue4go.github.io/db4gorm)'
 1.  [Env](https://reglue4go.github.io/env/)
-    [//]: # '1. [Filesystem](https://reglue4go.github.io/filesystem/)'
-    [//]: # '1. [Foundation](https://reglue4go.github.io/foundation/)'
 1.  [Stringable](https://reglue4go.github.io/stringable/)
-    [//]: # '1. [Structures](https://reglue4go.github.io/structures/)'
 1.  [View](https://reglue4go.github.io/view/)
 
 [//]: # '## License'
@@ -25,3 +19,9 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 [//]: # 'https://stackoverflow.com/questions/4823468/comments-in-markdown'
 [//]: # '![GitHub profile picture](https://github.com/drnkwati.png)'
 [//]: # 'https://choosealicense.com/no-permission/'
+[//]: # '1. [Cryptography](https://reglue4go.github.io/cryptography)'
+[//]: # '1. [Database](https://reglue4go.github.io/db)'
+[//]: # '1. [Database - GORM](https://reglue4go.github.io/db4gorm)'
+[//]: # '1. [Filesystem](https://reglue4go.github.io/filesystem/)'
+[//]: # '1. [Foundation](https://reglue4go.github.io/foundation/)'
+[//]: # '1. [Structures](https://reglue4go.github.io/structures/)'
