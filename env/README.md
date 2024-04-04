@@ -18,14 +18,11 @@ package main
 
 import (
 	"github.com/reglue4go/env"
-	"github.com/reglue4go/structures"
-
-	"github.com/magiconair/properties"
 )
 
 func main() {
-	var items structures.Bag = env.Read("DB_DATABASE=:memory:\nDB_PORT=3306")
-	var props properties.Properties = env.ReadProperties(
+	items := env.Read("DB_DATABASE=:memory:\nDB_PORT=3306")
+	props := env.ReadProperties(
 		"app.name=Go",
 		"db.port=3306\nhost:localhost",
 		"DB_DATABASE=:memory:\nDB_PORT=3306",
@@ -67,7 +64,7 @@ The ReadRemote method reads values from io.Reader in to a Bag(map):
 
 ```go
 if response, err := http.Get("https://website.com/config/.env.production"); err == nil {
-	var items structures.Bag = env.ReadRemote(response.Body)
+	var items := env.ReadRemote(response.Body)
 
 	value := items.Get("DB_PORT").ToInt()
 	// 3306
@@ -79,7 +76,7 @@ if response, err := http.Get("https://website.com/config/.env.production"); err 
 The ReadProperties method reads values from files, plain strings and io.Reader in to a Bag(map):
 
 ```go
-var props properties.Properties = env.ReadProperties(
+var props := env.ReadProperties(
 	"app.name=Go",
 	"db.port=3306\nhost:localhost",
 	"DB_DATABASE=:memory:\nDB_PORT=3306",
@@ -95,7 +92,7 @@ value := props.MustGetString("DB_DATABASE")
 The Read method reads values from a file or plain string in to a Bag(map):
 
 ```go
-var items structures.Bag = env.Read("DB_DATABASE=:memory:\nDB_PORT=3306")
+var items := env.Read("DB_DATABASE=:memory:\nDB_PORT=3306")
 
 value := items.Get("DB_PORT").ToInt()
 // 3306
