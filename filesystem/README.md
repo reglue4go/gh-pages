@@ -162,7 +162,7 @@ success := filesystem.Prepend("./temp.log", "Prepended Text")
 The Name method may be used to extract the file name from a file path.
 
 ```go
-name := filesystem.Name("./public/images/cat.jpg")
+name := filesystem.Name("./public/images/cat.jpg") // cat
 ```
 
 #### [MoveDirectory](#available-methods)
