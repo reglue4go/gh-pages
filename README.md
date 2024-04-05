@@ -8,6 +8,7 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 
 1.  [Config](https://reglue4go.github.io/config)
 1.  [Env](https://reglue4go.github.io/env/)
+1.  [Filesystem](https://reglue4go.github.io/filesystem/)
 1.  [Stringable](https://reglue4go.github.io/stringable/)
 1.  [View](https://reglue4go.github.io/view/)
 
@@ -22,6 +23,5 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 [//]: # '1. [Cryptography](https://reglue4go.github.io/cryptography)'
 [//]: # '1. [Database](https://reglue4go.github.io/db)'
 [//]: # '1. [Database - GORM](https://reglue4go.github.io/db4gorm)'
-[//]: # '1. [Filesystem](https://reglue4go.github.io/filesystem/)'
 [//]: # '1. [Foundation](https://reglue4go.github.io/foundation/)'
 [//]: # '1. [Structures](https://reglue4go.github.io/structures/)'
