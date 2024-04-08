@@ -5,13 +5,14 @@
 > Table Of Contents
 >
 > -   [Introduction](#introduction)
-> -   Available Structures
+> -   [Configuration Methods](#configuration-methods)
+> -   Available Cryptographers
+>     1.  [Digester](https://reglue4go.github.io/cryptography/digester)
 >     1.  [Aes Crypter](https://reglue4go.github.io/cryptography/aesCrypter)
 >     1.  [Id Generator](https://reglue4go.github.io/cryptography/idGenerator)
 >     1.  [Argon2 Hasher](https://reglue4go.github.io/cryptography/argon2Hasher)
 >     1.  [Bcrypt Hasher](https://reglue4go.github.io/cryptography/bcryptHasher)
 >     1.  [Id Transcoder](https://reglue4go.github.io/cryptography/idTranscoder)
->     1.  [Digester](https://reglue4go.github.io/cryptography/digester)
 > -   [Unit Tests Matrix](#unit-tests-matrix)
 
 ## Introduction
@@ -59,6 +60,23 @@ func main() {
 	// true
 }
 
+```
+
+## Configuration Methods
+
+The following methods are avaliable to all cryptographers. First you instantiate a cryptographer before calling the method.
+
+#### [SetConfig](#configuration-methods)
+
+```go
+cryptographer.SetConfig("string key", "string value")
+```
+
+#### [GetConfig](#configuration-methods)
+
+```go
+cryptographer.GetConfig("string key")
+// "string value"
 ```
 
 {% include footMatrixes.md %}
