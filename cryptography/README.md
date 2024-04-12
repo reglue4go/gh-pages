@@ -21,7 +21,7 @@ The cryptography package provides an agnostic interface for data encrypting, dec
 
 #### [Digester](#introduction)
 
-The cryptography digester can be used to protect the integrity of a piece of data by creating a one-way hash of a value. The example above uses the md5 and sha255 algoriths. Other supported message digest algoriths include sha1, sha3, sha512
+The cryptography digester can be used to protect the integrity of a piece of data by creating a one-way hash of a value. The following example uses the md5 and sha255 algoriths. Other supported message digest algoriths include sha1, sha3, sha512
 
 ```go
 package main
@@ -57,6 +57,7 @@ func main() {
 #### [AES Crypter](#introduction)
 
 Encrypting and decrypting text can be done using the AES-256 crypter. You must first set the key configuration option before before using the encrypter.
+After instanciation, you can call the SetKey method to update the encryption key.
 
 ```go
 package main
@@ -83,7 +84,7 @@ func main() {
 
 #### [Identity Generator](#introduction)
 
-The identity Generator generator can be used to produce universally unique identifiers using UUID, ULID and KSUID algoriths. A ULID generator is provided by default.
+The identity generator can be used to produce universally unique identifiers using UUID, ULID and KSUID algoriths. A ULID generator is provided by default.
 
 ```go
 package main
@@ -94,9 +95,9 @@ func main() {
 	algorithm := "ulid"
 	generator := generators.NewIdGenerator(algorithm)
 
-	id1 := generator.Generate()
+	id := generator.Generate()
 
-	fmt.Printf("%v\n", id1)
+	fmt.Printf("%v\n", id)
 
 	id2 := generator.Generate()
 
@@ -106,7 +107,7 @@ func main() {
 
 #### [Hashing](#introduction)
 
-Hashing of values such as user passwords can be done using Bcrypt and Argon2. You may hash a password by calling the Make method on the Hasher instance.
+Hashing of values such as user passwords can be done using Bcrypt and Argon2 cryptographic algoriths. You may hash a password by calling the Make method on an instance of the hasher.
 
 ```go
 package main
@@ -143,7 +144,7 @@ func main() {
 
 #### [Identity Transcoder](#introduction)
 
-You can generate short unique URL-safe identifiers from numbers using the identity transcoder. These are good for link shortening and securing database keys.
+You can generate short unique URL-safe identifiers from numbers using the identity transcoder. These are good for link shortening and securly hiding database generated keys.
 
 ```go
 package main
@@ -151,13 +152,16 @@ package main
 import "github.com/reglue4go/cryptography/transcoders"
 
 func main() {
-	generator := transcoders.NewIdTranscoder(algorithm)
+	transcoder := transcoders.NewIdTranscoder()
+	transcoder.SetConfig("alphabet", "FxnXM1kBN6cuhsAvjW3Co7l2RePyY8DwaU04Tzt9fHQrqSVKdpimLGIJOgb5ZE")
+	transcoder.SetConfig("blocklist", "86Rf07")
+	transcoder.UseDefaultTranscoder()
 
-	id1 := generator.Generate()
+	id1 := transcoder.Generate()
 
 	fmt.Printf("%v\n", id1)
 
-	id2 := generator.Generate()
+	id2 := transcoder.Generate()
 
 	fmt.Printf("%v\n", id2)
 }
@@ -167,17 +171,28 @@ func main() {
 
 The following methods are avaliable to all cryptographers. First you instantiate a cryptographer before calling the method.
 
+#### [SetAlgorithm](#configuration-methods)
+
+```go
+cryptographer.SetAlgorithm("sha1")
+```
+
+#### [GetAlgorithm](#configuration-methods)
+
+```go
+algo := cryptographer.GetAlgorithm() // "sha1"
+```
+
 #### [SetConfig](#configuration-methods)
 
 ```go
-cryptographer.SetConfig("string key", "string value")
+cryptographer.SetConfig("key", "value")
 ```
 
 #### [GetConfig](#configuration-methods)
 
 ```go
-cryptographer.GetConfig("string key")
-// "string value"
+cryptographer.GetConfig("key") // "value"
 ```
 
 {% include footMatrixes.md %}
