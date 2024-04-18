@@ -13,6 +13,8 @@
 
 The env package provides a convenient interface for loading environment and property files.
 
+> <a href="https://reglue4go.github.io/env/example.md" target="_blank">Properties File Example</a>
+
 ```go
 package main
 
