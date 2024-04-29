@@ -89,7 +89,7 @@ value := stringable.New("is").Wrap("This ", " golang")
 
 #### [WhenStartsWith](#available-methods)
 
-The WhenStartsWith method invokes the given closure if the string starts with the given sub-string. The closure will receive the fluent string instance:
+The WhenStartsWith method invokes the given closure if the string starts with the given sub-string. The closure will receive the string value:
 
 ```go
 value := stringable.New("disney world").
@@ -101,7 +101,7 @@ value := stringable.New("disney world").
 
 #### [WhenNotExactly](#available-methods)
 
-The WhenNotExactly method invokes the given closure if the string does not exactly match the given string. The closure will receive the fluent string instance:
+The WhenNotExactly method invokes the given closure if the string does not exactly match the given string. The closure will receive the string value
 
 ```go
 value := stringable.New("alita").
@@ -125,7 +125,7 @@ value := stringable.New("Framework").
 
 #### [WhenExactly](#available-methods)
 
-The WhenExactly method invokes the given closure if the string exactly matches the given string. The closure will receive the fluent string instance:
+The WhenExactly method invokes the given closure if the string exactly matches the given string. The closure will receive the string value:
 
 ```go
 value := stringable.New("Alita").
@@ -137,7 +137,7 @@ value := stringable.New("Alita").
 
 #### [WhenEndsWith](#available-methods)
 
-The WhenEndsWith method invokes the given closure if the string ends with the given sub-string. The closure will receive the fluent string instance:
+The WhenEndsWith method invokes the given closure if the string ends with the given sub-string. The closure will receive the string value:
 
 ```go
 value := stringable.New("disney world").
@@ -161,7 +161,7 @@ value := stringable.New(" ").
 
 #### [WhenContainsAll](#available-methods)
 
-The WhenContainsAll method invokes the given closure if the string contains all of the given sub-strings. The closure will receive the fluent string instance:
+The WhenContainsAll method invokes the given closure if the string contains all of the given sub-strings. The closure will receive the string value:
 
 ```go
 value := stringable.New("tony stark").
@@ -173,7 +173,7 @@ value := stringable.New("tony stark").
 
 #### [WhenContains](#available-methods)
 
-The WhenContains method invokes the given closure if the string contains the given value. The closure will receive the fluent string instance:
+The WhenContains method invokes the given closure if the string contains the given value. The closure will receive the string value:
 
 ```go
 value := stringable.New("tony stark").
