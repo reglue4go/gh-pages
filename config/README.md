@@ -1,4 +1,4 @@
-# Config
+# Configuration
 
 {% include headOScoverage.md %}
 
@@ -11,7 +11,7 @@
 
 ## Introduction
 
-The config package provides an expressive agnostic interface for working with configuration loaders. You can use third party loaders like viper.
+The config package provides an expressive agnostic interface for working with configuration loaders. You can load configurations using third party loaders like viper and koanf.
 
 ```go
 package main
