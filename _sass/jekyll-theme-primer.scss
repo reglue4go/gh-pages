@@ -8,21 +8,25 @@
 
 // custom styles // @import './custom';
 
-.markdown-body {
-	// border-bottom: 1px solid #eaecef;
-	// padding-bottom: 0.3em;
-	h1 {
-		font-size: 1.3rem; // 2em;
-	}
-	h2 {
-		font-size: 1.15em;
-	}
+// .markdown-body {
+// 	// border-bottom: 1px solid #eaecef;
+// 	// padding-bottom: 0.3em;
 
-	// hover
-	a {
-		transition: text-decoration 0.3s ease-in-out;
-	}
-}
+// 	.markdown-body > :first-child {
+// 		font-size: 1.3rem;
+// 	}
+// 	// h1 {
+// 	// 	font-size: 1.3rem; // 2em;
+// 	// }
+// 	h2 {
+// 		font-size: 1.15em;
+// 	}
+
+// 	// hover
+// 	a {
+// 		transition: text-decoration 0.3s ease-in-out;
+// 	}
+// }
 
 // helpers
 .text-center {
