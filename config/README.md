@@ -1,4 +1,4 @@
-# Configuration
+# Config
 
 {% include headOScoverage.md %}
 
@@ -11,14 +11,13 @@
 
 ## Introduction
 
-The config package provides an expressive agnostic interface for working with configuration loaders. You can load configurations using third party loaders like viper and koanf.
+The config package provides an expressive agnostic interface for working with configuration loaders. You can use third party loaders like viper.
 
 ```go
 package main
 
 import (
 	"github.com/reglue4go/config"
-	"github.com/reglue4go/structures"
 
 	"github.com/knadh/koanf"
 	"github.com/knadh/koanf/parsers/yaml"
@@ -90,8 +89,7 @@ The Load method reads configurations from provided sources like files and databa
 ```go
 value := repository.Load().Get("app.name", "recipes").String()
 
-fmt.Printf("%v\n", value)
-// "recipes"
+fmt.Printf("%v\n", value) // "recipes"
 ```
 
 #### [Items](#available-methods)
@@ -99,10 +97,9 @@ fmt.Printf("%v\n", value)
 The Items method returns the underlying Bag(map) of loaded configurations:
 
 ```go
-var bag structures.Bag = repository.Items()
+bag := repository.Items()
 
-fmt.Printf("%v\n", bag.IsEmpty())
-// false
+fmt.Printf("%v\n", bag.IsEmpty()) // false
 ```
 
 #### [Get](#available-methods)
@@ -110,13 +107,11 @@ fmt.Printf("%v\n", bag.IsEmpty())
 The Get method retrieves the specified configuration as a Fluent value. An optional second value can be provided as fallback in case of a missing key:
 
 ```go
-var value structures.Fluent = repository.Get("server.ports.http")
+value := repository.Get("server.ports.http")
 
-fmt.Printf("%v\n", value.ToInt())
-// 8080
+fmt.Printf("%v\n", value.ToInt()) // 8080
 
-fmt.Printf("%v\n", value.ToString())
-// "8080"
+fmt.Printf("%v\n", value.ToString()) // "8080"
 ```
 
 #### [AddRetriever](#available-methods)
