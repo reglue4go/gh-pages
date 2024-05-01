@@ -2,27 +2,28 @@
 
 Reglue packages provide an enjoyable, expressive elegant syntax for developing applications.
 
-> 👉 **Note:**&ensp;This repository contains documentation for packages written in the Go programming language, published at [Reglue Go](https://github.com/reglue4go){: translate="no"}
+> 👉 **Note:**&ensp;This repository contains documentation for packages written in the Go programming language, published at&ensp;[Reglue Go](https://github.com/reglue4go){: translate="no"}
 
 ## 📦 Package Listing
 
 1.  [Configuration](https://reglue4go.github.io/config){: translate="no"}
 1.  [Cryptography](https://reglue4go.github.io/cryptography){: translate="no"}
 1.  [Database](https://reglue4go.github.io/db){: translate="no"}
-1.  [Environment](https://reglue4go.github.io/env/){: translate="no"}
-1.  [Filesystem](https://reglue4go.github.io/filesystem/){: translate="no"}
-1.  [Stringable](https://reglue4go.github.io/stringable/){: translate="no"}
-1.  [Structures](https://reglue4go.github.io/structures/){: translate="no"}
-1.  [View](https://reglue4go.github.io/view/){: translate="no"}
+1.  [Environment](https://reglue4go.github.io/env){: translate="no"}
+1.  [Filesystem](https://reglue4go.github.io/filesystem){: translate="no"}
+1.  [Foundation](https://reglue4go.github.io/foundation){: translate="no"}
+1.  [Stringable](https://reglue4go.github.io/stringable){: translate="no"}
+1.  [Structures](https://reglue4go.github.io/structures){: translate="no"}
+1.  [View](https://reglue4go.github.io/view){: translate="no"}
 1.  [Database - GORM](https://reglue4go.github.io/db4gorm){: translate="no"}
 
-[//]: # '1. [Foundation - aero](https://reglue4go.github.io/foundation4aero/)'
-[//]: # '1. [Foundation - echo](https://reglue4go.github.io/foundation4echo/)'
-[//]: # '1. [Foundation - fiber](https://reglue4go.github.io/foundation4fiber/)'
-[//]: # '1. [Foundation - gin](https://reglue4go.github.io/foundation4gin/)'
-[//]: # '## 🧩 🗳 Framework Integration'
+[//]: # '1. [Foundation - aero](https://reglue4go.github.io/foundation4aero/){: translate="no"}'
+[//]: # '1. [Foundation - echo](https://reglue4go.github.io/foundation4echo/){: translate="no"}'
+[//]: # '1. [Foundation - fiber](https://reglue4go.github.io/foundation4fiber/){: translate="no"}'
+[//]: # '1. [Foundation - gin](https://reglue4go.github.io/foundation4gin/){: translate="no"}'
+[//]: # '## 🧩 💡 Framework Integration'
 
-## 💡 Application Portfolio
+## 🗳 Application Listing
 
 [//]: # '## License'
 [//]: # 'A license is provided on a per user basis.'
@@ -32,4 +33,3 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 [//]: # 'https://stackoverflow.com/questions/4823468/comments-in-markdown'
 [//]: # '![GitHub profile picture](https://github.com/drnkwati.png)'
 [//]: # 'https://choosealicense.com/no-permission/'
-[//]: # '1. [Foundation](https://reglue4go.github.io/foundation/)'

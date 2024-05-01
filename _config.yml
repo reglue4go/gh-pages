@@ -1,7 +1,12 @@
 # ============================================================================
-# if your site is serving on https://xxx.github.io, set `baseurl: /`
-# if your site is serving on https://xxx.github.io/path, set `baseurl: /path`
+# https://www.markdownguide.org
+# https://kramdown.gettalong.org/syntax.html
+# ============================================================================
+# if serving on https://xxx.github.io, set `baseurl: /`
+# if serving on https://xxx.github.io/path, set `baseurl: /path`
 baseurl: /
+
+siteurl: https://reglue4go.github.io
 
 # site title
 title: Reglue Go
