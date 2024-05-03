@@ -1,10 +1,12 @@
 # [Documentation](https://reglue4go.github.io)
 
+![Golang](https://img.shields.io/badge/Golang-black?logo=go)
+
 Reglue packages provide an enjoyable, expressive elegant syntax for developing applications.
 
 > 👉 **Note:**&ensp;This repository contains documentation for packages written in the Go programming language, published at&ensp;[Reglue Go](https://github.com/reglue4go){: translate="no"}
 
-## 📦 Package Listing
+## 📦&ensp;Package Listing
 
 1.  [Configuration](https://reglue4go.github.io/config){: translate="no"}
 1.  [Cryptography](https://reglue4go.github.io/cryptography){: translate="no"}
@@ -21,9 +23,9 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 [//]: # '1. [Foundation - echo](https://reglue4go.github.io/foundation4echo/){: translate="no"}'
 [//]: # '1. [Foundation - fiber](https://reglue4go.github.io/foundation4fiber/){: translate="no"}'
 [//]: # '1. [Foundation - gin](https://reglue4go.github.io/foundation4gin/){: translate="no"}'
-[//]: # '## 🧩 💡 Framework Integration'
+[//]: # '## 🧩 💡 🗳 Framework Integration'
 
-## 🗳 Application Listing
+## <img height="20" width="20" src="https://unpkg.com/simple-icons/icons/go.svg" />&ensp;Application Listing
 
 [//]: # '## License'
 [//]: # 'A license is provided on a per user basis.'
