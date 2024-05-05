@@ -25,7 +25,7 @@ Reglue packages provide an enjoyable, expressive elegant syntax for developing a
 [//]: # '1. [Foundation - gin](https://reglue4go.github.io/foundation4gin/){: translate="no"}'
 [//]: # '## 🧩 💡 🗳 Framework Integration'
 
-## <img height="20" width="20" src="https://unpkg.com/simple-icons/icons/go.svg" />&ensp;Application Listing
+## 🗳&ensp;Application Listing
 
 [//]: # '## License'
 [//]: # 'A license is provided on a per user basis.'
