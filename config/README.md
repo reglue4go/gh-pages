@@ -38,7 +38,7 @@ func main() {
 // you can use viper or any other loader
 func createRepository() *config.Repository {
 	handler := koanf.New(".") // Use "." as the key path delimiter.
-	repository := config.NewRepository().
+	repository := config.New().
 		AddLoader(func(_ *config.Repository) {
 			handler.Load(file.Provider(target), yaml.Parser())
 			// handler.Load(file.Provider(target), toml.Parser())
@@ -58,72 +58,21 @@ func createRepository() *config.Repository {
 
 ## Available Methods
 
-| &#8230;                   | &#8230;                       | &#8230;             |
-| :------------------------ | :---------------------------- | :------------------ |
-| [AddLoader](#addloader)   | [AddRetriever](#addretriever) | [Get](#get)         |
-| [Items](#items)           | [Load](#load)                 | [Loaders](#loaders) |
-| [Retrievers](#retrievers) |                               |                     |
+| &#8230;                               | &#8230;                 | &#8230;                       |
+| :------------------------------------ | :---------------------- | :---------------------------- |
+| [AddKeysRetriever](#addkeysretriever) | [AddLoader](#addloader) | [AddRetriever](#addretriever) |
+| [Get](#get)                           | [Items](#items)         | [Keys](#keys)                 |
+| [Load](#load)                         | [Loaders](#loaders)     | [Retrievers](#retrievers)     |
 
 ## Method Listing
 
-#### [Retrievers](#available-methods)
+#### [AddKeysRetriever](#available-methods)
 
-The Retrievers method optionally adds a new configuration retriever and returns the list of registered retrievers:
-
-```go
-callbacks := repository.Retrievers()
-```
-
-#### [Loaders](#available-methods)
-
-The Loaders method optionally adds a new configuration loader and returns the list of registered loaders:
+The AddKeysRetriever method registers a callback for retrieving all configuration keys:
 
 ```go
-callbacks := repository.Loaders()
-```
-
-#### [Load](#available-methods)
-
-The Load method reads configurations from provided sources like files and databases:
-
-```go
-value := repository.Load().Get("app.name", "recipes").String()
-
-fmt.Printf("%v\n", value) // "recipes"
-```
-
-#### [Items](#available-methods)
-
-The Items method returns the underlying Bag(map) of loaded configurations:
-
-```go
-bag := repository.Items()
-
-fmt.Printf("%v\n", bag.IsEmpty()) // false
-```
-
-#### [Get](#available-methods)
-
-The Get method retrieves the specified configuration as a Fluent value. An optional second value can be provided as fallback in case of a missing key:
-
-```go
-value := repository.Get("server.ports.http")
-
-fmt.Printf("%v\n", value.ToInt()) // 8080
-
-fmt.Printf("%v\n", value.ToString()) // "8080"
-```
-
-#### [AddRetriever](#available-methods)
-
-The AddRetriever method adds a new configuration retriever and returns the Repository instance:
-
-```go
-repository.AddRetriever(func(key string) (any, bool) {
-	if viper.IsSet(key) {
-		return viper.GetString(key), true
-	}
-	return nil, false
+repository.AddKeysRetriever(func() []string {
+	return viper.AllKeys()
 })
 ```
 
@@ -144,6 +93,77 @@ repository.AddLoader(func(repo *config.Repository) {
 		Put("app.name", "recipes").
 		Put("app.url", "https://recipes.io")
 })
+```
+
+#### [AddRetriever](#available-methods)
+
+The AddRetriever method adds a new configuration retriever and returns the Repository instance:
+
+```go
+repository.AddRetriever(func(key string) (any, bool) {
+	if viper.IsSet(key) {
+		return viper.GetString(key), true
+	}
+	return nil, false
+})
+```
+
+#### [Get](#available-methods)
+
+The Get method retrieves the specified configuration as a Fluent value. An optional second value can be provided as fallback in case of a missing key:
+
+```go
+value := repository.Get("server.ports.http")
+
+fmt.Printf("%v\n", value.ToInt()) // 8080
+
+fmt.Printf("%v\n", value.ToString()) // "8080"
+```
+
+#### [Items](#available-methods)
+
+The Items method returns the underlying Bag(map) of loaded configurations:
+
+```go
+bag := repository.Items()
+
+fmt.Printf("%v\n", bag.IsEmpty()) // false
+```
+
+#### [Keys](#available-methods)
+
+The Keys method retrieves all loaded configuration keys:
+
+```go
+value := repository.Keys()
+
+fmt.Printf("%v\n", value) // ["http_port", "jdbc_port"]
+```
+
+#### [Load](#available-methods)
+
+The Load method reads configurations from provided sources like files and databases:
+
+```go
+value := repository.Load().Get("app.name", "recipes").String()
+
+fmt.Printf("%v\n", value) // "recipes"
+```
+
+#### [Loaders](#available-methods)
+
+The Loaders method optionally adds a new configuration loader and returns the list of registered loaders:
+
+```go
+callbacks := repository.Loaders()
+```
+
+#### [Retrievers](#available-methods)
+
+The Retrievers method optionally adds a new configuration retriever and returns the list of registered retrievers:
+
+```go
+callbacks := repository.Retrievers()
 ```
 
 {% include footMatrixes.md %}
