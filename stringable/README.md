@@ -19,12 +19,10 @@ package main
 import "github.com/reglue4go/stringable"
 
 func main() {
-	title := stringable.New("Go").Append("LanG").Ucfirst().Value()
+	title := stringable.New("go").Append("lang").Ucfirst().String()
 
-	fmt.Printf("%v\n", title)
-	// Golang
+	fmt.Printf("%v\n", title) // Golang
 }
-
 ```
 
 ## Available Methods
@@ -67,6 +65,9 @@ The ReplaceNth method replaces the nth occurrence of a given value in a string:
 ```go
 value := stringable.New("the fox jumps over the lazy dog").ReplaceNth("the", "A", 1).Value()
 // "A fox jumps over the lazy dog"
+
+value := stringable.New("the fox jumps over the lazy dog").ReplaceNth("the", "a", 2).Value()
+// "the fox jumps over a lazy dog"
 ```
 
 #### [ReplaceLast](#available-methods)
